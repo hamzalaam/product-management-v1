@@ -1,0 +1,319 @@
+openapi: 3.0.0
+info:
+  title: Product Management API
+  description: API for managing products, user authentication, shopping cart, and wishlist
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8081
+    description: Development server
+
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        code:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        image:
+          type: string
+        category:
+          type: string
+        price:
+          type: number
+          format: double
+        quantity:
+          type: integer
+        internalReference:
+          type: string
+        shellId:
+          type: integer
+        inventoryStatus:
+          type: string
+          enum: [INSTOCK, LOWSTOCK, OUTOFSTOCK]
+        rating:
+          type: number
+          format: float
+        createdAt:
+          type: integer
+          format: int64
+        updatedAt:
+          type: integer
+          format: int64
+
+    UserCredentials:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+
+    UserRegistration:
+      type: object
+      required:
+        - username
+        - firstname
+        - email
+        - password
+      properties:
+        username:
+          type: string
+        firstname:
+          type: string
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+
+    Token:
+      type: object
+      properties:
+        token:
+          type: string
+
+    CartItem:
+      type: object
+      properties:
+        productId:
+          type: integer
+        quantity:
+          type: integer
+
+    WishlistItem:
+      type: object
+      properties:
+        productId:
+          type: integer
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - bearerAuth: []
+
+paths:
+  /account:
+    post:
+      summary: Create a new user account
+      tags:
+        - Authentication
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRegistration'
+      responses:
+        '201':
+          description: Account created successfully
+        '400':
+          description: Invalid input
+        '409':
+          description: Email already exists
+
+  /token:
+    post:
+      summary: Login to get JWT token
+      tags:
+        - Authentication
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCredentials'
+      responses:
+        '200':
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+        '401':
+          description: Invalid credentials
+
+  /products:
+    get:
+      summary: Retrieve all products
+      tags:
+        - Products
+      parameters:
+        - in: query
+          name: category
+          schema:
+            type: string
+          description: Filter by category
+        - in: query
+          name: status
+          schema:
+            type: string
+            enum: [INSTOCK, LOWSTOCK, OUTOFSTOCK]
+          description: Filter by inventory status
+      responses:
+        '200':
+          description: List of products
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+
+    post:
+      summary: Create a new product
+      tags:
+        - Products
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        '201':
+          description: Product created successfully
+        '403':
+          description: Only admin can create products
+
+  /products/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: Product ID
+
+    get:
+      summary: Get product by ID
+      tags:
+        - Products
+      responses:
+        '200':
+          description: Product details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '404':
+          description: Product not found
+
+    patch:
+      summary: Update product details
+      tags:
+        - Products
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        '200':
+          description: Product updated successfully
+        '403':
+          description: Only admin can update products
+        '404':
+          description: Product not found
+
+    delete:
+      summary: Delete a product
+      tags:
+        - Products
+      security:
+        - bearerAuth: []
+      responses:
+        '204':
+          description: Product deleted successfully
+        '403':
+          description: Only admin can delete products
+        '404':
+          description: Product not found
+
+  /cart:
+    get:
+      summary: Get user's shopping cart
+      tags:
+        - Shopping Cart
+      responses:
+        '200':
+          description: User's cart items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CartItem'
+
+    post:
+      summary: Add item to cart
+      tags:
+        - Shopping Cart
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CartItem'
+      responses:
+        '201':
+          description: Item added to cart
+        '400':
+          description: Invalid input
+        '404':
+          description: Product not found
+
+  /wishlist:
+    get:
+      summary: Get user's wishlist
+      tags:
+        - Wishlist
+      responses:
+        '200':
+          description: User's wishlist items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WishlistItem'
+
+    post:
+      summary: Add item to wishlist
+      tags:
+        - Wishlist
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WishlistItem'
+      responses:
+        '201':
+          description: Item added to wishlist
+        '400':
+          description: Invalid input
+        '404':
+          description: Product not found
