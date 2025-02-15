@@ -10,16 +10,19 @@ import java.time.ZonedDateTime;
 import java.util.List;
 
 @Entity
-@Table(name = "users")
 @Getter
 @Setter
+@Table(name = "users", indexes = {
+        @Index(name = "idx_email", columnList = "email", unique = true), // Unique index on email
+        @Index(name = "idx_username", columnList = "username") // Unique index on username
+})
 public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, unique = true, length = 50)
     private String username;
 
     @Column(nullable = false, length = 50)

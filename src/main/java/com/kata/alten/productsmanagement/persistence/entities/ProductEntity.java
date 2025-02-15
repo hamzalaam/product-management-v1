@@ -9,10 +9,12 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
-@Table(name = "products")
 @Getter
 @Setter
-
+@Table(name = "products", indexes = {
+        @Index(name = "idx_category", columnList = "category") ,// index for fast search of category
+        @Index(name = "idx_inventory_status", columnList = "inventory_status") // index for fast search of inventory status
+})
 public class ProductEntity {
 
     @Id
