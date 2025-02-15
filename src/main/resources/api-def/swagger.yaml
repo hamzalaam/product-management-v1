@@ -110,6 +110,7 @@ security:
 paths:
   /account:
     post:
+      operationId: createUserAccount
       summary: Create a new user account
       tags:
         - Authentication
@@ -130,6 +131,7 @@ paths:
 
   /token:
     post:
+      operationId: loginUser
       summary: Login to get JWT token
       tags:
         - Authentication
@@ -152,6 +154,7 @@ paths:
 
   /products:
     get:
+      operationId: getAllProducts
       summary: Retrieve all products
       tags:
         - Products
@@ -178,6 +181,7 @@ paths:
                   $ref: '#/components/schemas/Product'
 
     post:
+      operationId: createProduct
       summary: Create a new product
       tags:
         - Products
@@ -205,6 +209,7 @@ paths:
         description: Product ID
 
     get:
+      operationId: getProductById
       summary: Get product by ID
       tags:
         - Products
@@ -219,6 +224,7 @@ paths:
           description: Product not found
 
     patch:
+      operationId: updateProduct
       summary: Update product details
       tags:
         - Products
@@ -239,6 +245,7 @@ paths:
           description: Product not found
 
     delete:
+      operationId: deleteProduct
       summary: Delete a product
       tags:
         - Products
@@ -254,6 +261,7 @@ paths:
 
   /cart:
     get:
+      operationId: getShoppingCart
       summary: Get user's shopping cart
       tags:
         - Shopping Cart
@@ -268,6 +276,7 @@ paths:
                   $ref: '#/components/schemas/CartItem'
 
     post:
+      operationId: addItemToCart
       summary: Add item to cart
       tags:
         - Shopping Cart
@@ -287,6 +296,7 @@ paths:
 
   /wishlist:
     get:
+      operationId: getWishlist
       summary: Get user's wishlist
       tags:
         - Wishlist
@@ -301,6 +311,7 @@ paths:
                   $ref: '#/components/schemas/WishlistItem'
 
     post:
+      operationId: addItemToWishlist
       summary: Add item to wishlist
       tags:
         - Wishlist
