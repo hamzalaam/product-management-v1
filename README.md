@@ -42,6 +42,7 @@ Getting Started
 
 git clone <repository-url>
 cd <project-directory>
+
 2. Configure the Database if needed
 Update the application.yml file with your PostgreSQL credentials:
 
