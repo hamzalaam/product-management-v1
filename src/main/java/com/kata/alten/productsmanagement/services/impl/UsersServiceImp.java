@@ -122,14 +122,10 @@ public class UsersServiceImp implements UserService {
         if (clsUser.isPresent()) {
 
             Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(clsUser.get().getUsername(), password));
-
             SecurityContextHolder.getContext().setAuthentication(authentication);
-
             UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
 
-            String jwtToken = jwtUtils.generateJwtCookie(userDetails);
-
-            return jwtToken;
+            return jwtUtils.generateJwtCookie(userDetails);
         }
         throw new CustomException(UsersServiceImp.class, ExceptionEnum.USER_NOT_FOUND);
     }

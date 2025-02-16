@@ -9,8 +9,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
+/**
+ * user details implementation service used for security
+ */
 public class UserDetailsImpl implements UserDetails {
   private static final long serialVersionUID = 1L;
 
@@ -21,24 +23,36 @@ public class UserDetailsImpl implements UserDetails {
   private String email;
 
 
-  private Long sessionId;
 
   @JsonIgnore
   private String password;
 
   private Collection<? extends GrantedAuthority> authorities;
 
+  /**
+   * constructor
+   * @param id id
+   * @param username username
+   * @param email email
+   * @param password password
+   * @param authorities authorities or roles
+   */
   public UserDetailsImpl(Long id, String username, String email, String password,
-      Collection<? extends GrantedAuthority> authorities,Long sessionId) {
+      Collection<? extends GrantedAuthority> authorities) {
     this.id = id;
     this.username = username;
     this.email = email;
     this.password = password;
     this.authorities = authorities;
-    this.sessionId = sessionId;
   }
 
-  public static UserDetailsImpl build(UserEntity user, Long lngSessionId) {
+  /**
+   * build user details
+   * @param user user
+   * @param lngSessionId session id
+   * @return user details impl
+   */
+  public static UserDetailsImpl build(UserEntity user) {
     List<GrantedAuthority> authorities =  List.of(
     new SimpleGrantedAuthority(user.getUserRole().name()));
 
@@ -47,9 +61,13 @@ public class UserDetailsImpl implements UserDetails {
         user.getUsername(),
         user.getEmail(),
         user.getPasswordHash(),
-        authorities,lngSessionId);
+        authorities);
   }
 
+  /**
+   * get authorities or roles
+   * @return list
+   */
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
     return authorities;
@@ -91,14 +109,6 @@ public class UserDetailsImpl implements UserDetails {
   @Override
   public boolean isEnabled() {
     return true;
-  }
-
-  public Long getSessionId() {
-    return sessionId;
-  }
-
-  public void setSessionId(Long sessionId) {
-    this.sessionId = sessionId;
   }
 
   @Override

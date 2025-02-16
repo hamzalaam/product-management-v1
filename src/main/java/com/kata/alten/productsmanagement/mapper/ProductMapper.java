@@ -2,7 +2,6 @@ package com.kata.alten.productsmanagement.mapper;
 import com.kata.alten.productsmanagement.gen.model.Product;
 import com.kata.alten.productsmanagement.persistence.entities.ProductEntity;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;

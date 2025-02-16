@@ -1,6 +1,7 @@
 package com.kata.alten.productsmanagement.persistence.specification;
 
 import com.kata.alten.productsmanagement.persistence.entities.ProductEntity;
+import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
 
 /**
@@ -10,7 +11,9 @@ import org.springframework.data.jpa.domain.Specification;
  * Case 3 : only status is filled: return all product within given status
  * Case 4 : both category and status filled: return all products within both criteria
  */
+@NoArgsConstructor
 public class ProductSpecifications {
+
 
     /**
      * specification has inventory status

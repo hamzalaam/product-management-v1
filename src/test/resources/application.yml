@@ -1,0 +1,10 @@
+admin:
+  mail: admin@admin.com
+
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+    root: INFO

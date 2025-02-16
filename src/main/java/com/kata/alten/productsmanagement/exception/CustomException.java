@@ -12,7 +12,7 @@ public class CustomException extends RuntimeException{
     /**
      * enum for exception
      */
-    private ExceptionEnum exceptionEnum;
+   final private ExceptionEnum exceptionEnum;
 
     /**
      * product excepttion

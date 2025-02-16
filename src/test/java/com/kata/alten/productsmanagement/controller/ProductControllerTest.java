@@ -137,7 +137,7 @@ class ProductControllerTest {
             productController.getProductById(1);
         });
 
-        assertEquals(ExceptionEnum.USER_NOT_FOUND, exception.getExceptionEnum());
+        assertEquals(ExceptionEnum.PRODUCT_NOT_FOUND, exception.getExceptionEnum());
         verify(productsService, times(1)).retrieveProduct(1);
         verify(productMapper, never()).toDto(any(com.kata.alten.productsmanagement.persistence.entities.ProductEntity.class));
     }
