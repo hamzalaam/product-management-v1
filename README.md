@@ -44,6 +44,7 @@ git clone <repository-url>
 cd <project-directory>
 
 2. Configure the Database if needed
+   
 Update the application.yml file with your PostgreSQL credentials:
 
 spring:
@@ -54,25 +55,33 @@ spring:
     driver-class-name: org.postgresql.Driver
     
 
-3 mvn clean install
+3. mvn clean install ( to generate apis and api models automatically through maven)
 
 4. Build and Run the Project
 
 APIs implemented : 
 
 Products Management:
+
 GET /api/products/{id}: Retrieve a specific product by ID.
+
 POST /api/products: Create a new product.
+
 PUT /api/products/{id}: Update an existing product.
+
 DELETE /api/products/{id}: Delete a product.
 
+
 User Management
+
 POST /account: Create a new user.
+
 POST /token: Retrieve a specific user token by email and password.
 
 
 
 Code Quality and Best Practices
+
 SOLID Principles: The codebase is designed with SOLID principles in mind, ensuring modularity and scalability.
 
 Swagger Code Generation: API documentation and code are auto-generated, reducing manual effort and improving consistency.
@@ -82,6 +91,7 @@ Detailed Comments: The code is well-commented to simplify understanding and main
 Microservice architecture : the code is complying to 
 
 Future Enhancements:
+
 Implement Shopping Cart functionality to allow users to manage their carts.
 
 Add Wishlist endpoints for users to save and manage their favorite products.
