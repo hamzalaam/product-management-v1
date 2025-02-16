@@ -3,7 +3,7 @@ CREATE DATABASE products;
 -- Create enum type for inventory status
 CREATE TYPE inventory_status AS ENUM ('INSTOCK', 'LOWSTOCK', 'OUTOFSTOCK');
 -- Create enum type for user roles
-CREATE TYPE user_roles AS ENUM ('ADMIN', 'REGULAR');
+CREATE TYPE user_roles AS ENUM ('ADMIN', 'USER');
 
 -- Users table
 CREATE TABLE users (
@@ -11,7 +11,7 @@ CREATE TABLE users (
     username VARCHAR(50) NOT NULL UNIQUE,
     firstname VARCHAR(50) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
-    roles user_roles NOT NULL DEFAULT 'REGULAR',
+    roles user_roles NOT NULL DEFAULT 'USER',
     password_hash VARCHAR(255) NOT NULL,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP

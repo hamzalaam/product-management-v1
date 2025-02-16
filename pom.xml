@@ -36,6 +36,7 @@
         <jackson-datatype-threetenbp.version>2.6.4</jackson-datatype-threetenbp.version>
         <jackson-databind-nullable.version>0.2.6</jackson-databind-nullable.version>
         <org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
+        <jwt.verion>0.11.5</jwt.verion>
 
     </properties>
     <dependencies>
@@ -97,6 +98,25 @@
             <groupId>org.openapitools</groupId>
             <artifactId>jackson-databind-nullable</artifactId>
             <version>${jackson-databind-nullable.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <version>${jwt.verion}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>${jwt.verion}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId>
+            <version>${jwt.verion}</version>
         </dependency>
     </dependencies>
     <build>

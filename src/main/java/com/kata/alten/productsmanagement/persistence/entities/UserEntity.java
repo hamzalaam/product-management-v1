@@ -2,7 +2,6 @@ package com.kata.alten.productsmanagement.persistence.entities;
 
 
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -36,7 +35,7 @@ public class UserEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false)
-    private UserRole userRole = UserRole.REGULAR;
+    private UserRole userRole = UserRole.USER;
 
 
     @Column(name = "created_at", nullable = false, updatable = false)

@@ -3,6 +3,9 @@ package com.kata.alten.productsmanagement;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * spring boot for product management
+ */
 @SpringBootApplication
 public class ProductsManagementApplication {
 

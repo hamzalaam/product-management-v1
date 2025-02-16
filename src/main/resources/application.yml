@@ -2,7 +2,7 @@ server:
   port: 8081
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/products
+    url: jdbc:postgresql://localhost:5432/productmanagement_dev
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
@@ -11,6 +11,21 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  mvc:
+    async:
+      request-timeout: 3600000
+kata:
+  app:
+    jwtSecret: ======================kata=Spring===========================
+    jwtExpirationMs: 86400000
+
+admin:
+  mail: admin@admin.com
+
+
 logging:
   level:
+    org:
+      springframework:
+        security: DEBUG
     root: INFO

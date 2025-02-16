@@ -9,6 +9,7 @@ import com.kata.alten.productsmanagement.services.ProductsService;
 import com.kata.alten.productsmanagement.services.impl.ProductsServiceImp;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -44,6 +45,7 @@ public class ProductController implements ProductsApi {
      * @param product (required)
      * @return created product
      */
+    @PreAuthorize("hasAuthority('ADMIN')")
     @Override
     public ResponseEntity<Void> createProduct(Product product) {
 
@@ -53,10 +55,11 @@ public class ProductController implements ProductsApi {
     }
 
     /**
-     * delete product by it's id
+     * delete product by its id
      * @param id Product ID (required)
      * @return void
      */
+    @PreAuthorize("hasAuthority('ADMIN')")
     @Override
     public ResponseEntity<Void> deleteProduct(Integer id) {
         this.productsService.deleteProduct(id);
@@ -70,6 +73,7 @@ public class ProductController implements ProductsApi {
      * @param inventoryStatus Filter by inventory status (optional)
      * @return list of products
      */
+    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     @Override
     public ResponseEntity<List<Product>> getAllProducts(String category, String inventoryStatus) {
 
@@ -86,9 +90,10 @@ public class ProductController implements ProductsApi {
      */
 
     @Override
+    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     public ResponseEntity<Product> getProductById(Integer id) {
         var product = this.productsService.retrieveProduct(id).map(productMapper::toDto);
-        return product.map(ResponseEntity::ok).orElseThrow(() -> new CustomException(ProductsServiceImp.class, ExceptionEnum.USER_NOT_FOUND));
+        return product.map(ResponseEntity::ok).orElseThrow(() -> new CustomException(ProductsServiceImp.class, ExceptionEnum.PRODUCT_NOT_FOUND));
     }
 
     /**
@@ -97,6 +102,7 @@ public class ProductController implements ProductsApi {
      * @param product  (required)
      * @return void
      */
+    @PreAuthorize("hasAuthority('ADMIN')")
     @Override
     public ResponseEntity<Void> updateProduct(Integer id, Product product) {
         var productEntity = productMapper.toEntity(product);

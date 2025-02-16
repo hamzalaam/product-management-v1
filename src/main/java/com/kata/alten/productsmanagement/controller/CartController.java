@@ -1,10 +1,7 @@
 package com.kata.alten.productsmanagement.controller;
 
 import com.kata.alten.productsmanagement.gen.api.CartApi;
-import com.kata.alten.productsmanagement.gen.api.WishlistApi;
 import com.kata.alten.productsmanagement.gen.model.CartItem;
-import com.kata.alten.productsmanagement.gen.model.WishlistItem;
-import com.kata.alten.productsmanagement.utils.ErrorUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
