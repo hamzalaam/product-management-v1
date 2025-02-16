@@ -1,0 +1,420 @@
+{
+  "name": "ProductManagement",
+  "version": "1",
+  "items": [
+    {
+      "type": "folder",
+      "name": "products",
+      "items": [
+        {
+          "type": "http",
+          "name": "product creation",
+          "seq": 7,
+          "request": {
+            "url": "http://localhost:8081/products",
+            "method": "POST",
+            "headers": [
+              {
+                "name": "Content-type",
+                "value": "application/json",
+                "enabled": true
+              }
+            ],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"code\": \"123459\",\n  \"name\": \"iphone 18\",\n  \"description\": \"iphone 16 AC 2025\",\n  \"category\": \"mobile\",\n  \"price\": 10,\n  \"quantity\": 360,\n  \"internalReference\": \"123456\",\n  \"shellId\": 23,\n  \"inventoryStatus\": \"INSTOCK\",\n  \"rating\": 5\n}",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImlhdCI6MTczOTcxNzQ3NiwiZXhwIjoxNzM5ODAzODc2fQ.2W8diy52NN3HSeBNG8UroHOtxetj8ZbJJe1UDURjkvE"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "product delete",
+          "seq": 9,
+          "request": {
+            "url": "http://localhost:8081/products/36",
+            "method": "DELETE",
+            "headers": [
+              {
+                "name": "Content-type",
+                "value": "application/json",
+                "enabled": true
+              }
+            ],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImlhdCI6MTczOTcxNzQ3NiwiZXhwIjoxNzM5ODAzODc2fQ.2W8diy52NN3HSeBNG8UroHOtxetj8ZbJJe1UDURjkvE"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "product update",
+          "seq": 8,
+          "request": {
+            "url": "http://localhost:8081/products/7",
+            "method": "PATCH",
+            "headers": [
+              {
+                "name": "Content-type",
+                "value": "application/json",
+                "enabled": true
+              }
+            ],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n\n  \"code\": \"123458\",\n  \"name\": \"iphone 18\",\n  \"description\": \"iphone 16 AC 2025\",\n  \"category\": \"mobile\",\n  \"image\": \"iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAIAAADTED8xAAADMElEQVR4nOzVwQnAIBQFQYXff81RUkQCOyDj1YOPnbXWPmeTRef+/3O/OyBjzh3CD95BfqICMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMO0TAAD//2Anhf4QtqobAAAAAElFTkSuQmCC\",\n  \"price\": 10,\n  \"quantity\": 360,\n  \"internalReference\": \"123456\",\n  \"shellId\": 23,\n  \"inventoryStatus\": \"INSTOCK\",\n  \"rating\": 5\n}",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImlhdCI6MTczOTcxNzQ3NiwiZXhwIjoxNzM5ODAzODc2fQ.2W8diy52NN3HSeBNG8UroHOtxetj8ZbJJe1UDURjkvE"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "retrieve All product by category",
+          "seq": 2,
+          "request": {
+            "url": "http://localhost:8081/products?category=mobile",
+            "method": "GET",
+            "headers": [],
+            "params": [
+              {
+                "name": "category",
+                "value": "mobile",
+                "type": "query",
+                "enabled": true
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImlhdCI6MTczOTcxNzQ3NiwiZXhwIjoxNzM5ODAzODc2fQ.2W8diy52NN3HSeBNG8UroHOtxetj8ZbJJe1UDURjkvE"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "retrieve All product by status and category",
+          "seq": 4,
+          "request": {
+            "url": "http://localhost:8081/products?status=INSTOCK",
+            "method": "GET",
+            "headers": [],
+            "params": [
+              {
+                "name": "status",
+                "value": "INSTOCK",
+                "type": "query",
+                "enabled": true
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImlhdCI6MTczOTcxNzQ3NiwiZXhwIjoxNzM5ODAzODc2fQ.2W8diy52NN3HSeBNG8UroHOtxetj8ZbJJe1UDURjkvE"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "retrieve All product by status",
+          "seq": 3,
+          "request": {
+            "url": "http://localhost:8081/products?status=INSTOCK",
+            "method": "GET",
+            "headers": [],
+            "params": [
+              {
+                "name": "status",
+                "value": "INSTOCK",
+                "type": "query",
+                "enabled": true
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImlhdCI6MTczOTcxNzQ3NiwiZXhwIjoxNzM5ODAzODc2fQ.2W8diy52NN3HSeBNG8UroHOtxetj8ZbJJe1UDURjkvE"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "retrieve All product",
+          "seq": 1,
+          "request": {
+            "url": "http://localhost:8081/products",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImlhdCI6MTczOTcxNzQ3NiwiZXhwIjoxNzM5ODAzODc2fQ.2W8diy52NN3HSeBNG8UroHOtxetj8ZbJJe1UDURjkvE"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "retrieve product by id not existing",
+          "seq": 6,
+          "request": {
+            "url": "http://localhost:8081/products/1000",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImlhdCI6MTczOTcxNzQ3NiwiZXhwIjoxNzM5ODAzODc2fQ.2W8diy52NN3HSeBNG8UroHOtxetj8ZbJJe1UDURjkvE"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "retrieve product by id",
+          "seq": 5,
+          "request": {
+            "url": "http://localhost:8081/products/1",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "user creation",
+      "items": [
+        {
+          "type": "http",
+          "name": "admin creation",
+          "seq": 3,
+          "request": {
+            "url": "http://localhost:8081/account",
+            "method": "POST",
+            "headers": [
+              {
+                "name": "Content-type",
+                "value": "application/json",
+                "enabled": true
+              }
+            ],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"username\": \"admin\",\n  \"firstname\": \"string\",\n  \"email\": \"admin@admin.com\",\n  \"password\": \"test\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "user creation",
+          "seq": 1,
+          "request": {
+            "url": "http://localhost:8081/account",
+            "method": "POST",
+            "headers": [
+              {
+                "name": "Content-type",
+                "value": "application/json",
+                "enabled": true
+              }
+            ],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"username\": \"admin\",\n  \"firstname\": \"string\",\n  \"email\": \"admin@admin.com\",\n  \"password\": \"admin\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "user login admin",
+          "seq": 4,
+          "request": {
+            "url": "http://localhost:8081/token",
+            "method": "POST",
+            "headers": [
+              {
+                "name": "Content-type",
+                "value": "application/json",
+                "enabled": true
+              }
+            ],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"email\": \"admin@admin.com\",\n  \"password\": \"test\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "user login regular user",
+          "seq": 2,
+          "request": {
+            "url": "http://localhost:8081/token",
+            "method": "POST",
+            "headers": [
+              {
+                "name": "Content-type",
+                "value": "application/json",
+                "enabled": true
+              }
+            ],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"email\": \"test1@test.com\",\n  \"password\": \"test\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "environments": [],
+  "brunoConfig": {
+    "version": "1",
+    "name": "ProductManagement",
+    "type": "collection",
+    "ignore": [
+      "node_modules",
+      ".git"
+    ]
+  }
+}
